@@ -1,26 +1,34 @@
-#advice_wrapper {
-  text-align: center;
-  margin: 2em 0;
+#github_profile {
+  width: 100%;
+  padding: 20px;
 }
 
-#advice_wrapper h2 {
-    margin: 1em 0;
+#github_profile img {
+  background-color: #ccc;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1em;
 }
 
-#advice_wrapper p {
-  font-size: 1.2em;
-  margin-bottom: 1.2em;
-}
-
-#advice_wrapper button {
-  cursor: pointer;
-  background-color: #aeccda;
-  border-radius: 5px;
-  padding: 0.6em 0.8em;
+.profile_name {
+  font-size: 24px;
+  line-height: 1.25;
+  display: block;
   font-weight: bold;
-  border: 1px solid rgb(165, 165, 165);
 }
 
-#advice_wrapper button:hover{
-    opacity: .8;
+.profile_login {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 24px;
+  color: #57606a;
+  margin-bottom: 1em;
+}
+
+.profile_bio {
+  font-size: 16px;
 }

@@ -3,32 +3,41 @@ import styles from "./Profile.module.css";
 
 import { useEffect, useState } from "react";
 
-const Profile = () => {
-  const [profileData, setProfileData] = useState();
+const Profile = ({ userName }) => {
+  
 
-  const [advice, setAdvice] = useState("");
+  // GitHub Data
+  const [profileData, setProfileData] = useState("");
 
-  const baseURL = `https://api.adviceslip.com/advice`;
+  
 
+  // GitHub URL
+  const githubURL = `https://api.github.com/users/${userName}`;
+
+  // GitHub Profile fetch
   useEffect(() => {
     const getProfile = async (url) => {
       const res = await fetch(url);
-      const data = await res.json();
+      const profileDataFetch = await res.json();
 
-      setProfileData(data);
+      setProfileData(profileDataFetch);
     };
-
-    getProfile(baseURL);
-  }, [advice]);
-
+    getProfile(githubURL);
+  }, [githubURL]);
+  
   return (
-    <div id={styles.advice_wrapper}>
-      <h2>Peça um conselho e sinta-se melhor!</h2>
-      <p>{advice && profileData.slip.advice}</p>
-      <button onClick={() => setAdvice((prevState) => prevState + 1)}>
-        Preciso de um Conselho
-      </button>
-    </div>
+    <>
+      <div id={styles.github_profile}>
+        {userName.length > 0 && (
+          <>
+            <img src={profileData.avatar_url} alt={profileData.name} />
+            <p className={styles.profile_name}>{profileData.name}</p>
+            <p className={styles.profile_login}>{profileData.login}</p>
+            <p className={styles.profile_bio}>{profileData.bio}</p>
+          </>
+        )}
+      </div>
+    </>
   );
 };
 
