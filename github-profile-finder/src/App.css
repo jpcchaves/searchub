@@ -4,3 +4,8 @@
   font-family: "Open Sans", sans-serif;
   background: #f6fcff;
 }
+
+#root h2 {
+  text-align: center;
+  margin: 2em 0;
+}

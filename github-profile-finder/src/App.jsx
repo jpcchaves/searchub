@@ -3,7 +3,7 @@ import SearchForm from "./components/SearchForm";
 
 function App() {
   return (
-    <div className="App">
+    <div id="root">
       <h2>GitHub Profile Finder</h2>
       <SearchForm />
     </div>
