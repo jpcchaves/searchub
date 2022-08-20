@@ -1,4 +1,5 @@
 // CSS
+import Profile from "../Profile";
 import styles from "./SearchForm.module.css";
 
 const SearchForm = () => {
@@ -8,7 +9,7 @@ const SearchForm = () => {
 
   return (
     <div id={styles.form_wrapper}>
-      <h3>Busque seu Usuário</h3>
+      <h3>Procure seu Perfil no GitHub</h3>
       <form onSubmit={handleSubmit} className={styles.form}>
         <label className={styles.label}>
           <span>Digite seu nome de usuário:</span>
@@ -16,6 +17,7 @@ const SearchForm = () => {
           <input type="submit" value="Buscar" />
         </label>
       </form>
+      <Profile />
     </div>
   );
 };
