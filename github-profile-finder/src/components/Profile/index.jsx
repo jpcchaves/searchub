@@ -18,22 +18,23 @@ const Profile = ({ userName }) => {
 
   // GitHub Profile fetch
   useEffect(() => {
-    const getProfile = async (url) => {
-      setLoading(true);
-      const res = await fetch(url);
-      const profileDataFetch = await res.json();
-      if (profileDataFetch) {
+    const getProfile = async () => {
+      try {
+        const res = await fetch(githubURL);
+        const profileDataFetch = await res.json();
         setProfileData(profileDataFetch);
+        setLoading(true);
+      } catch (error) {
+        setLoading(true);
       }
     };
-    getProfile(githubURL);
-    setLoading(true);
+    getProfile();
   }, [githubURL]);
 
   return (
     <>
       <div id={styles.github_profile}>
-        {userName.length > 0 && !profileData.message ? (
+        {profileData && !loading ? (
           <>
             <img src={profileData.avatar_url} alt={profileData.name} />
             <p className={styles.profile_name}>{profileData.name}</p>
@@ -62,9 +63,7 @@ const Profile = ({ userName }) => {
           </>
         ) : (
           <>
-            {profileData && userName.length > 0 && loading && (
-              <p>Usuário não encontrado!</p>
-            )}
+            {userName.length > 0 && loading && <p>Usuário não encontrado!</p>}
           </>
         )}
       </div>
