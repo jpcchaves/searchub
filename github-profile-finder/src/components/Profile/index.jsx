@@ -10,12 +10,16 @@ const Profile = ({ userName }) => {
   // GitHub Data
   const [profileData, setProfileData] = useState("");
 
+  // Loading State
+  const [loading, setLoading] = useState(false);
+
   // GitHub URL
   const githubURL = `https://api.github.com/users/${userName}`;
 
   // GitHub Profile fetch
   useEffect(() => {
     const getProfile = async (url) => {
+      setLoading(true);
       const res = await fetch(url);
       const profileDataFetch = await res.json();
       if (profileDataFetch) {
@@ -23,6 +27,7 @@ const Profile = ({ userName }) => {
       }
     };
     getProfile(githubURL);
+    setLoading(true);
   }, [githubURL]);
 
   return (
@@ -57,7 +62,7 @@ const Profile = ({ userName }) => {
           </>
         ) : (
           <>
-            {profileData && userName.length > 0 && (
+            {profileData && userName.length > 0 && loading && (
               <p>Usuário não encontrado!</p>
             )}
           </>
