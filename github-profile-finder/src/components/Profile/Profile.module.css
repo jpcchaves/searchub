@@ -131,3 +131,50 @@ input::placeholder {
 .profile_url:hover {
   color: #57606a;
 }
+
+@media (max-width: 1024px) {
+  #form_wrapper {
+    max-width: 95%;
+  }
+
+  #form_wrapper h3 {
+    font-size: 20px;
+  }
+
+  #github_profile img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .profile_name {
+    font-size: 20px;
+    line-height: 1.25;
+    display: block;
+    font-weight: bold;
+  }
+
+  .profile_login {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 24px;
+    color: #57606a;
+    margin-bottom: 1em;
+  }
+
+  .profile_bio {
+    font-size: 16px;
+    margin-bottom: 1em;
+  }
+
+  .profile_location,
+  .profile_email,
+  .profile_link {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5em;
+  }
+}
