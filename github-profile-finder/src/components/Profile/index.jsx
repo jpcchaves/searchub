@@ -21,6 +21,7 @@ const Profile = () => {
   // Loading State
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // GitHub URL
   const githubURL = `https://api.github.com/users/${userName}`;
@@ -39,11 +40,23 @@ const Profile = () => {
         const res = await fetch(githubURL);
         const profileDataFetch = await res.json();
 
-        if (profileDataFetch.message) {
-          return () => setError(true);
+        setProfileData(profileDataFetch);
+
+        if (profileDataFetch.message === "Not Found" && userName !== "") {
+          setError(true);
+          setErrorMessage(profileDataFetch.message);
         }
 
-        setProfileData(profileDataFetch);
+        if (
+          profileDataFetch.message ===
+            "API rate limit exceeded for 177.37.234.82. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)" &&
+          userName !== ""
+        ) {
+          setError(true);
+          setErrorMessage(profileDataFetch.message);
+        }
+
+        console.log(profileDataFetch);
       } catch (error) {
         setError(true);
       }
@@ -77,12 +90,17 @@ const Profile = () => {
           </button>
         )}
       </form>
-      {error && <p>Ocorreu um erro... Tente novamente mais tarde.</p>}
+      {error && (
+        <div className={styles.error_paragraph}>
+          <p>Ocorreu um erro... Tente novamente mais tarde.</p>
+          {errorMessage}
+        </div>
+      )}
       {loading ? (
         <p>Carregando...</p>
       ) : (
         <>
-          {userName !== "" && (
+          {userName !== "" && !error && (
             <div id={styles.github_profile}>
               <img src={profileData.avatar_url} alt={profileData.name} />
               <p className={styles.profile_name}>{profileData.name}</p>

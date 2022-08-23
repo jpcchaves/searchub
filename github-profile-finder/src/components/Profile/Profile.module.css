@@ -38,6 +38,13 @@
   opacity: 0.8;
 }
 
+.error_paragraph {
+  background-color: rgba(252, 149, 149, 0.753);
+  padding: 20px;
+  margin: 1em 0;
+  border-radius: 10px;
+}
+
 input {
   margin-bottom: 1em;
   padding: 1em 0;
