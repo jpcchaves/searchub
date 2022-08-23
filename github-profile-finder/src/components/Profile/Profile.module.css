@@ -1,5 +1,5 @@
 #form_wrapper {
-  max-width: 66%;
+  max-width: 43%;
   margin: 30px auto 0 auto;
   min-height: auto;
   box-shadow: 1px 1px 10px 4px rgba(0, 0, 0, 0.159);
@@ -24,6 +24,20 @@
   font-weight: bold;
 }
 
+.btn {
+  border: none;
+  background-color: #aeccda;
+  padding: 0.4em 0.8em;
+  border-radius: 5px;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
 input {
   margin-bottom: 1em;
   padding: 1em 0;
@@ -43,6 +57,7 @@ input[type="submit"] {
   padding: 0.6em 0.8em;
   font-weight: bold;
   border: 1px solid rgb(165, 165, 165);
+  transition: 0.5s ease-in-out;
 }
 
 input[type="submit"]:hover {
