@@ -117,14 +117,12 @@ const Profile = () => {
                 <BsFillGeoAltFill />
                 {profileData.location || "Não informado"}
               </p>
-              <p className={styles.profile_blog}>
-                <BsLink />
-                {(
-                  <a href={profileData.blog} target="_blank">
-                    {profileData.blog}
-                  </a>
-                ) || "Não informado"}
-              </p>
+              {profileData.blog && (
+                <p className={styles.profile_blog}>
+                  <BsLink />
+                  {profileData.blog}
+                </p>
+              )}
               <p className={styles.profile_company}>
                 <BsFillBriefcaseFill />
                 {profileData.company || "Disponível para trabalhar"}
