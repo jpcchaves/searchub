@@ -4,9 +4,13 @@ import styles from "./Advices.module.css";
 import { useState, useEffect, useRef } from "react";
 
 const Advices = () => {
+  // loading state
+  const [loading, setLoading] = useState(false);
+
   // Advice Data
   const [adviceData, setAdviceData] = useState("");
 
+  // update advice
   const [uploadAdvice, setUploadAdvice] = useState(0);
 
   //  Advice URL
@@ -18,6 +22,7 @@ const Advices = () => {
   useEffect(() => {
     if (uploadAdvice != 0) {
       const getAdvice = async () => {
+        setLoading(true);
         if (shouldGiveAdvice.current) {
           shouldGiveAdvice.current = false;
           const res = await fetch(adviceURL)
@@ -26,6 +31,7 @@ const Advices = () => {
           setAdviceData(res);
           shouldGiveAdvice.current = true;
         }
+        setLoading(false);
       };
       getAdvice();
     }
@@ -37,13 +43,16 @@ const Advices = () => {
       <div id={styles.advice_wrapper}>
         <h2>Peça um conselho e sinta-se melhor!</h2>
         <p>{adviceData && adviceData.slip.advice}</p>
-        <button
-          onClick={() => {
-            setUploadAdvice((prevState) => prevState + 1);
-          }}
-        >
-          Preciso de um Conselho
-        </button>
+        {loading && <button disabled>Carregando...</button>}
+        {!loading && (
+          <button
+            onClick={() => {
+              setUploadAdvice((prevState) => prevState + 1);
+            }}
+          >
+            Preciso de um Conselho
+          </button>
+        )}
       </div>
     </>
   );
