@@ -115,7 +115,7 @@ input::placeholder {
 .profile_blog,
 .profile_link,
 .profile_company {
-  margin-bottom: .6em;
+  margin-bottom: 0.6em;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -138,7 +138,8 @@ svg {
   color: rgb(0, 0, 0);
 }
 
-.profile_url:hover, .profile_blog a:hover {
+.profile_url:hover,
+.profile_blog a:hover {
   color: #57606a;
 }
 
@@ -177,14 +178,7 @@ svg {
     margin-bottom: 1em;
   }
 
-  .profile_location,
-  .profile_blog,
-  .profile_link {
-    font-size: 1.2em;
-    margin-bottom: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5em;
+  svg {
+    font-size: 1em;
   }
 }
