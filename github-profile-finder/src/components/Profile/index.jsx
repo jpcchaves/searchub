@@ -4,7 +4,12 @@ import styles from "./Profile.module.css";
 import { useEffect, useState } from "react";
 
 // Icons
-import { BsFillGeoAltFill, BsEnvelopeFill, BsGithub } from "react-icons/bs";
+import {
+  BsFillGeoAltFill,
+  BsFillBriefcaseFill,
+  BsGithub,
+  BsLink,
+} from "react-icons/bs";
 
 const Profile = () => {
   // Profile Name
@@ -112,9 +117,17 @@ const Profile = () => {
                 <BsFillGeoAltFill />
                 {profileData.location || "Não informado"}
               </p>
-              <p className={styles.profile_email}>
-                <BsEnvelopeFill />
-                {profileData.email || "Não informado"}
+              <p className={styles.profile_blog}>
+                <BsLink />
+                {(
+                  <a href={profileData.blog} target="_blank">
+                    {profileData.blog}
+                  </a>
+                ) || "Não informado"}
+              </p>
+              <p className={styles.profile_company}>
+                <BsFillBriefcaseFill />
+                {profileData.company || "Disponível para trabalhar"}
               </p>
               <p className={styles.profile_link}>
                 <BsGithub />
