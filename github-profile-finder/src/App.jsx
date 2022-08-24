@@ -1,5 +1,5 @@
 import "./App.css";
-import SearchForm from "./components/SearchForm";
+import SearchForm from "./pages/SearchForm";
 
 function App() {
   return (

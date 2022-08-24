@@ -18,8 +18,6 @@ const Profile = () => {
   // Get profile name to send it to the fetchAPI
   const [userName, setUserName] = useState("");
 
-  console.log(profileName, userName);
-
   // GitHub Data
   const [profileData, setProfileData] = useState("");
 
@@ -47,21 +45,14 @@ const Profile = () => {
 
         setProfileData(profileDataFetch);
 
-        if (profileDataFetch.message === "Not Found" && userName !== "") {
-          setError(true);
-          setErrorMessage(profileDataFetch.message);
-        }
-
         if (
-          profileDataFetch.message ===
-            "API rate limit exceeded for 177.37.234.82. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)" &&
+          profileDataFetch.message &&
           userName !== ""
         ) {
           setError(true);
           setErrorMessage(profileDataFetch.message);
         }
 
-        console.log(profileDataFetch);
       } catch (error) {
         setError(true);
       }
@@ -113,10 +104,12 @@ const Profile = () => {
               <p className={styles.profile_bio}>
                 {profileData.bio || "Não informado"}
               </p>
-              <p className={styles.profile_location}>
+              <div className={styles.profile_location}>
                 <BsFillGeoAltFill />
-                {profileData.location || "Não informado"}
-              </p>
+                <p>
+                  {profileData.location || "Não informado"}
+                </p>
+              </div>
               {profileData.blog && (
                 <p className={styles.profile_blog}>
                   <BsLink />
