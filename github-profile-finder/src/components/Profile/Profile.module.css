@@ -114,7 +114,6 @@ input::placeholder {
 .profile_blog,
 .profile_link,
 .profile_company {
-  border: 1px solid black;
   margin-bottom: 0.6em;
   display: flex;
   width: 100%;
