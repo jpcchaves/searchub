@@ -76,7 +76,6 @@ input::placeholder {
 }
 
 #github_profile {
-  width: 100%;
   padding: 20px;
 }
 
@@ -115,15 +114,23 @@ input::placeholder {
 .profile_blog,
 .profile_link,
 .profile_company {
+  border: 1px solid black;
   margin-bottom: 0.6em;
   display: flex;
+  width: 100%;
   align-items: center;
-  justify-content: flex-start;
   gap: 0.5em;
 }
 
+div p{
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
 svg {
-  font-size: 1.2em;
+  min-width: fit-content;
 }
 
 .profile_blog a {

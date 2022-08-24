@@ -104,17 +104,15 @@ const Profile = () => {
               <p className={styles.profile_bio}>
                 {profileData.bio || "Não informado"}
               </p>
-              <div className={styles.profile_location}>
+                <p className={styles.profile_location}>
                 <BsFillGeoAltFill />
-                <p>
                   {profileData.location || "Não informado"}
                 </p>
-              </div>
               {profileData.blog && (
-                <p className={styles.profile_blog}>
+                <div className={styles.profile_blog}>
                   <BsLink />
-                  {profileData.blog}
-                </p>
+                  <p>{profileData.blog}</p>
+                </div>
               )}
               <p className={styles.profile_company}>
                 <BsFillBriefcaseFill />
