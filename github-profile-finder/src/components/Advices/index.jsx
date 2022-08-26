@@ -18,22 +18,33 @@ const Advices = () => {
 
   const shouldGiveAdvice = useRef(true);
 
+  const handleClick = () => {
+    setLoading(true)
+    setTimeout(() => {
+      setUploadAdvice((prevState) => prevState + 1);
+    }, 1000);
+  };
+
   // Advice Fetch
   useEffect(() => {
-    if (uploadAdvice != 0) {
-      const getAdvice = async () => {
-        setLoading(true);
-        if (shouldGiveAdvice.current) {
-          shouldGiveAdvice.current = false;
-          const res = await fetch(adviceURL)
-            .then((res) => res.json())
-            .catch((err) => err);
-          setAdviceData(res);
-          shouldGiveAdvice.current = true;
-        }
-        setLoading(false);
-      };
-      getAdvice();
+    try {
+      if (uploadAdvice !== 0) {
+        const getAdvice = async () => {
+          setLoading(true);
+          if (shouldGiveAdvice.current) {
+            shouldGiveAdvice.current = false;
+            const res = await fetch(adviceURL)
+              .then((res) => res.json())
+              .catch((err) => err);
+            setAdviceData(res);
+            shouldGiveAdvice.current = true;
+          }
+          setLoading(false);
+        };
+        getAdvice();
+      }
+    } catch (error) {
+      console.log(error.message);
     }
   }, [uploadAdvice]);
 
@@ -47,7 +58,7 @@ const Advices = () => {
         {!loading && (
           <button
             onClick={() => {
-              setUploadAdvice((prevState) => prevState + 1);
+              handleClick();
             }}
           >
             Preciso de um Conselho
