@@ -22,7 +22,7 @@ const Advices = () => {
     setLoading(true)
     setTimeout(() => {
       setUploadAdvice((prevState) => prevState + 1);
-    }, 1000);
+    }, 500);
   };
 
   // Advice Fetch
