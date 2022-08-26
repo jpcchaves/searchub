@@ -91,7 +91,7 @@ const Profile = () => {
         </div>
       )}
       {loading ? (
-        <p>Carregando...</p>
+        <p className={styles.loading_p}>Carregando...</p>
       ) : (
         <>
           {userName !== "" && !error && (

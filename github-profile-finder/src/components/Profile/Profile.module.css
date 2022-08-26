@@ -149,6 +149,12 @@ svg {
   color: #57606a;
 }
 
+.loading_p{
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5em;
+}
+
 @media (max-width: 1024px) {
   #form_wrapper {
     max-width: 95%;
