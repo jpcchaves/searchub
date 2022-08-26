@@ -114,7 +114,7 @@ const Profile = () => {
               )}
               <p className={styles.profile_company}>
                 <BsFillBriefcaseFill />
-                {profileData.company || "Disponível para trabalhar"}
+                {profileData.company || "Open to work!"}
               </p>
               <p className={styles.profile_link}>
                 <BsGithub />
