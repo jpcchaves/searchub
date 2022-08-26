@@ -45,14 +45,10 @@ const Profile = () => {
 
         setProfileData(profileDataFetch);
 
-        if (
-          profileDataFetch.message &&
-          userName !== ""
-        ) {
+        if (profileDataFetch.message && userName !== "") {
           setError(true);
           setErrorMessage(profileDataFetch.message);
         }
-
       } catch (error) {
         setError(true);
       }
@@ -70,7 +66,9 @@ const Profile = () => {
           <input
             type="text"
             placeholder="Nome de usuário..."
+            required
             onChange={(e) => setProfileName(e.target.value)}
+            value={profileName}
           />
         </label>
         {loading ? (
@@ -104,10 +102,10 @@ const Profile = () => {
               <p className={styles.profile_bio}>
                 {profileData.bio || "Não informado"}
               </p>
-                <p className={styles.profile_location}>
+              <p className={styles.profile_location}>
                 <BsFillGeoAltFill />
-                  {profileData.location || "Não informado"}
-                </p>
+                {profileData.location || "Não informado"}
+              </p>
               {profileData.blog && (
                 <div className={styles.profile_blog}>
                   <BsLink />
