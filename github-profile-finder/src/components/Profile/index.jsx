@@ -54,6 +54,7 @@ const Profile = () => {
       }
       setLoading(false);
     };
+    setProfileName("")
     getProfile();
   }, [userName]);
 
