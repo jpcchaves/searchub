@@ -1,10 +1,10 @@
 import { GlobalStyle } from '../styles/GlobalStyles';
-import SearchForm from './pages/SearchForm';
+import Home from './modules/profileForm/pages';
 
 export const App = () => {
 	return (
 		<>
-			<SearchForm />
+			<Home />
 			<GlobalStyle />
 		</>
 	);
