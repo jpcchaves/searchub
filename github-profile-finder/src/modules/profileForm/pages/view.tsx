@@ -16,24 +16,37 @@ const HomeView = ({
 }: HomeProps) => {
 	return (
 		<div className='w-screen h-screen max-w-full flex justify-center'>
-			<div className='mt-20'>
-				<h2>Busque seu perfil do GitHub</h2>
+			<div className='w-[70%] mt-20'>
+				<h2 className='text-center tracking-widest'>
+					Busque seu perfil do GitHub
+				</h2>
 				<form onSubmit={(e) => handleSubmit(e)}>
-					<span>
-						<label>Usuário</label>
-					</span>
-					<input
-						type='text'
-						name='profile'
-						placeholder='Digite o nome do seu usuário...'
-						value={username}
-						onChange={(e) => handleInputChange(e.target.value)}
-					/>
-
-					<input type='submit' value='Buscar' />
+					<div className='flex flex-col'>
+						<span className='text-lg mt-4'>
+							<label>Usuário</label>
+						</span>
+						<div className='w-full flex justify-center flex-col gap-2'>
+							<input
+								type='search'
+								className='form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+								aria-label='Search'
+								aria-describedby='button-addon3'
+								placeholder='Digite o nome do seu usuário...'
+								value={username}
+								onChange={(e) => handleInputChange(e.target.value)}
+							/>
+							<button
+								className='btn inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out mb-2'
+								type='submit'
+								id='button-addon3'
+							>
+								Buscar
+							</button>
+						</div>
+					</div>
 				</form>
-				{user && (
-					<div className='w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md '>
+				{Object.keys(user).length > 0 && (
+					<div className='w-full bg-white border border-gray-200 rounded-lg shadow-md p-10'>
 						<div className='w-full flex items-center justify-center flex-col'>
 							<div className='mb-2'>
 								<img
