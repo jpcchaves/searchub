@@ -1,33 +1,35 @@
-import { useState } from 'react';
-
-import {
-	Form,
-	FormTitle,
-	FormWrapper,
-	HomePageContainer,
-	Input,
-	InputSubmit,
-	Label,
-} from './style';
+import { FormEvent, useState } from 'react';
+import { api } from '../../../hooks/useApi';
+import { GithubUserInterface } from '../../../types/GithubUserInterface';
+import HomeView from './view';
 
 const Home = () => {
+	const [user, setUser] = useState<GithubUserInterface>(Object);
+	const [username, setUsername] = useState('');
+
+	const handleInputChange = (e: string) => {
+		setUsername(e);
+	};
+
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+
+		try {
+			const response = await api.get(`/users/${username}`);
+
+			setUser(response.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	return (
-		<HomePageContainer>
-			<FormWrapper>
-				<FormTitle>Busque seu perfil do GitHub</FormTitle>
-				<Form>
-					<span>
-						<Label>Usuário</Label>
-					</span>
-					<Input
-						type='text'
-						name='profile'
-						placeholder='Digite o nome do seu usuário...'
-					/>
-					<InputSubmit type='submit' value='Buscar' />
-				</Form>
-			</FormWrapper>
-		</HomePageContainer>
+		<HomeView
+			handleSubmit={handleSubmit}
+			handleInputChange={handleInputChange}
+			username={username}
+			user={user}
+		/>
 	);
 };
 
