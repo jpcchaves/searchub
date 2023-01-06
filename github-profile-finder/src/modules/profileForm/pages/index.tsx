@@ -43,6 +43,7 @@ const Home = () => {
 	const [user, setUser] = useState<GithubUserInterface>(Object);
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState('');
 
 	const handleInputChange = (e: string) => {
 		setUsername(e);
@@ -56,9 +57,18 @@ const Home = () => {
 			const response = await api.get(`/users/${username}`);
 			setUser(response.data);
 			setLoading(false);
-		} catch (error) {
+		} catch (error: any) {
 			console.log(error);
+			if (error.response.data.message) {
+				setError(error.response.data.message);
+			} else {
+				setError('Ocorreu um erro... Tente novamente');
+			}
 			setLoading(false);
+
+			setTimeout(() => {
+				setError('');
+			}, 2000);
 		}
 	};
 
@@ -69,6 +79,7 @@ const Home = () => {
 			username={username}
 			user={user}
 			loading={loading}
+			error={error}
 		/>
 	);
 };

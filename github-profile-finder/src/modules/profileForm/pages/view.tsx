@@ -9,6 +9,7 @@ interface HomeProps {
 	username: string;
 	user: GithubUserInterface;
 	loading: boolean;
+	error: string;
 }
 
 const HomeView = ({
@@ -17,6 +18,7 @@ const HomeView = ({
 	username,
 	user,
 	loading,
+	error,
 }: HomeProps) => {
 	return (
 		<AnimatedBg>
@@ -36,6 +38,7 @@ const HomeView = ({
 							<p className='text-lg mt-4'>
 								<label>Usuário</label>
 							</p>
+
 							<div className='w-full flex justify-center flex-col gap-2'>
 								<input
 									type='search'
@@ -79,6 +82,11 @@ const HomeView = ({
 									)}
 								</button>
 							</div>
+							{error ? (
+								<div className='my-4 flex items-center justify-center rounded p-2 bg-red-500 border-red-700 text-red-100'>
+									<p>{error}</p>
+								</div>
+							) : null}
 						</div>
 					</form>
 					{Object.keys(user).length > 0 && (
