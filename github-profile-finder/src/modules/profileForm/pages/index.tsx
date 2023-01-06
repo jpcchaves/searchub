@@ -40,8 +40,9 @@ const userPl = {
 };
 
 const Home = () => {
-	const [user, setUser] = useState<GithubUserInterface>(userPl);
+	const [user, setUser] = useState<GithubUserInterface>(Object);
 	const [username, setUsername] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const handleInputChange = (e: string) => {
 		setUsername(e);
@@ -51,10 +52,13 @@ const Home = () => {
 		e.preventDefault();
 
 		try {
+			setLoading(true);
 			const response = await api.get(`/users/${username}`);
 			setUser(response.data);
+			setLoading(false);
 		} catch (error) {
 			console.log(error);
+			setLoading(false);
 		}
 	};
 
@@ -64,6 +68,7 @@ const Home = () => {
 			handleInputChange={handleInputChange}
 			username={username}
 			user={user}
+			loading={loading}
 		/>
 	);
 };
