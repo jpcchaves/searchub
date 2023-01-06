@@ -7,8 +7,23 @@ interface AnimatedBgProps {
 
 const AnimatedBg = ({ children }: AnimatedBgProps) => {
 	return (
-		<div id='background'>
+		<div className='background'>
 			{children}
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
 			<span></span>
 			<span></span>
 			<span></span>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { GithubUserInterface } from '../../../types/GithubUserInterface';
 import AnimatedBg from '../components/AnimatedBg';
+import { BsGithub, BsLink45Deg } from 'react-icons/bs';
 
 interface HomeProps {
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -18,9 +19,15 @@ const HomeView = ({
 	return (
 		<AnimatedBg>
 			<div className='w-screen h-screen max-w-full flex justify-center absolute z-50'>
-				<div className='w-[70%] mt-20 '>
+				<div className='lg:w-[60%] md:w-[70%] sm:w-[95%] w-[95%] mt-20'>
 					<form onSubmit={(e) => handleSubmit(e)}>
-						<div className='flex flex-col bg-white p-10 rounded-t-lg'>
+						<div
+							className={
+								Object.keys(user).length > 0
+									? 'flex flex-col bg-white p-10 rounded-t-lg'
+									: 'flex flex-col bg-white p-10 rounded'
+							}
+						>
 							<h2 className='text-center tracking-widest'>
 								Busque seu perfil do GitHub
 							</h2>
@@ -38,7 +45,7 @@ const HomeView = ({
 									onChange={(e) => handleInputChange(e.target.value)}
 								/>
 								<button
-									className='btn inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out mb-2'
+									className='btn inline-block px-6 py-2 border-2 border-purple-700 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-purple-700 hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out'
 									type='submit'
 									id='button-addon3'
 								>
@@ -48,11 +55,11 @@ const HomeView = ({
 						</div>
 					</form>
 					{Object.keys(user).length > 0 && (
-						<div className='w-full bg-white rounded-b-lg shadow-md p-10'>
+						<div className='w-full bg-white rounded-b-lg p-10 '>
 							<div className='w-full flex items-center justify-center flex-col'>
 								<div className='mb-2'>
 									<img
-										className='inline-block h-40 w-40 rounded-full ring-2 ring-slate-200'
+										className='inline-block h-40 w-40 rounded-full ring-2 ring-purple-300'
 										src={`${user.avatar_url}`}
 										alt=''
 									/>
@@ -70,8 +77,9 @@ const HomeView = ({
 											<a
 												href={`${user.blog}`}
 												target='_blank'
-												className='inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'
+												className='inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 '
 											>
+												<BsLink45Deg className='mr-1 text-base tracking-widest' />
 												Site Pessoal
 											</a>
 										)}
@@ -79,11 +87,13 @@ const HomeView = ({
 										<a
 											href={`${user.html_url}`}
 											target='_blank'
-											className='inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700'
+											className='inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200'
 										>
+											<BsGithub className='mr-1 text-base tracking-widest' />
 											Github
 										</a>
 									</div>
+									<hr className='my-4' />
 								</div>
 							</div>
 						</div>
