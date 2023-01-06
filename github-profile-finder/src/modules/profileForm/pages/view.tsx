@@ -89,7 +89,7 @@ const HomeView = ({
 							) : null}
 						</div>
 					</form>
-					{Object.keys(user).length > 0 && (
+					{!error && Object.keys(user).length > 0 && (
 						<div className='w-full bg-white rounded-b-lg px-10 mb-52'>
 							<div className='w-full flex items-center justify-center flex-col'>
 								<div className='mb-2'>
