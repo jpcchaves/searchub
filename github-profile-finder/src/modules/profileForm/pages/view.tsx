@@ -30,32 +30,30 @@ const HomeView = ({
 						<div
 							className={
 								Object.keys(user).length > 0
-									? "flex flex-col bg-white p-10 rounded-t-lg"
-									: "flex flex-col bg-white p-10 rounded"
+									? "flex flex-col bg-white p-10 rounded-t-lg relative"
+									: "flex flex-col bg-white p-10 rounded relative"
 							}
 						>
-							<div className="relative">
-								<Icon.GithubLogo
-									size={32}
-									color="#0f0f0f"
-									className="absolute right-0 top-0"
-								>
-									<animate
-										attributeName="opacity"
-										values="0;1;0"
-										dur="3s"
-										repeatCount="indefinite"
-									></animate>
-									<animateTransform
-										attributeName="transform"
-										attributeType="XML"
-										type="scale"
-										dur="3s"
-										values="1;1.2;1"
-										repeatCount="indefinite"
-									/>
-								</Icon.GithubLogo>
-							</div>
+							<Icon.GithubLogo
+								size={32}
+								color="#0f0f0f"
+								className="absolute right-3 top-3"
+							>
+								<animate
+									attributeName="opacity"
+									values="0;1;0"
+									dur="3s"
+									repeatCount="indefinite"
+								></animate>
+								<animateTransform
+									attributeName="transform"
+									attributeType="XML"
+									type="scale"
+									dur="3s"
+									values="1;1.2;1"
+									repeatCount="indefinite"
+								/>
+							</Icon.GithubLogo>
 							<h2 className="text-center tracking-widest">
 								Busque seu perfil do GitHub
 							</h2>
