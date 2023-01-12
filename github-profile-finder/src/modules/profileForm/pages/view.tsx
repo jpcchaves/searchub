@@ -5,6 +5,7 @@ import ProfileInfo from "../components/profileInfo/ProfileInfo";
 import Button from "../components/button/Button";
 import Input from "../components/input/Input";
 import AnimatedIcon from "../components/animatedIcon/AnimatedIcon";
+import Error from "../components/error/Error";
 
 interface HomeProps {
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -50,11 +51,7 @@ const HomeView = ({
 								/>
 								<Button loading={loading} />
 							</div>
-							{error ? (
-								<div className="my-4 flex items-center justify-center rounded p-2 bg-red-500 border-red-700 text-red-100">
-									<p>{error}</p>
-								</div>
-							) : null}
+							{error ? <Error error={error} /> : null}
 						</div>
 					</form>
 					{!error && Object.keys(user).length > 0 && (
