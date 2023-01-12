@@ -4,6 +4,7 @@ import AnimatedBg from "../components/animatedBg/AnimatedBg";
 import ProfileInfo from "../components/profileInfo/ProfileInfo";
 import Loading from "../components/loading/Loading";
 import * as Icon from "phosphor-react";
+import Input from "../components/input/Input";
 
 interface HomeProps {
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -62,15 +63,9 @@ const HomeView = ({
 							</p>
 
 							<div className="w-full flex justify-center flex-col gap-2">
-								<input
-									type="search"
-									required
-									className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-purple-600 focus:outline-none"
-									aria-label="Search"
-									aria-describedby="button-addon3"
-									placeholder="Digite o nome do seu usuário..."
-									value={username}
-									onChange={(e) => handleInputChange(e.target.value)}
+								<Input
+									handleInputChange={handleInputChange}
+									username={username}
 								/>
 								<button
 									className={`btn inline-block px-6 py-2 border-2 border-purple-700 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-purple-900 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out ${
