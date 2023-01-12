@@ -3,6 +3,7 @@ import { GithubUserInterface } from "../../../types/GithubUserInterface";
 import AnimatedBg from "../components/animatedBg/AnimatedBg";
 import ProfileInfo from "../components/profileInfo/ProfileInfo";
 import Loading from "../components/loading/Loading";
+import * as Icon from "phosphor-react";
 
 interface HomeProps {
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -33,6 +34,28 @@ const HomeView = ({
 									: "flex flex-col bg-white p-10 rounded"
 							}
 						>
+							<div className="relative">
+								<Icon.GithubLogo
+									size={32}
+									color="#0f0f0f"
+									className="absolute right-0 top-0"
+								>
+									<animate
+										attributeName="opacity"
+										values="0;1;0"
+										dur="3s"
+										repeatCount="indefinite"
+									></animate>
+									<animateTransform
+										attributeName="transform"
+										attributeType="XML"
+										type="scale"
+										dur="3s"
+										values="1;1.2;1"
+										repeatCount="indefinite"
+									/>
+								</Icon.GithubLogo>
+							</div>
 							<h2 className="text-center tracking-widest">
 								Busque seu perfil do GitHub
 							</h2>
