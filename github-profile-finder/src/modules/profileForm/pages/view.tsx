@@ -4,6 +4,7 @@ import AnimatedBg from "../components/animatedBg/AnimatedBg";
 import ProfileInfo from "../components/profileInfo/ProfileInfo";
 import Loading from "../components/loading/Loading";
 import * as Icon from "phosphor-react";
+import Button from "../components/button/Button";
 import Input from "../components/input/Input";
 
 interface HomeProps {
@@ -67,16 +68,7 @@ const HomeView = ({
 									handleInputChange={handleInputChange}
 									username={username}
 								/>
-								<button
-									className={`btn inline-block px-6 py-2 border-2 border-purple-700 text-purple-600 font-medium text-xs leading-tight uppercase rounded hover:bg-purple-900 hover:bg-opacity-10 focus:outline-none focus:ring-0 transition duration-150 ease-in-out ${
-										loading ? "cursor-not-allowed" : ""
-									}`}
-									type="submit"
-									id="button-addon3"
-									disabled={loading}
-								>
-									{loading ? <Loading /> : "Buscar"}
-								</button>
+								<Button loading={loading} />
 							</div>
 							{error ? (
 								<div className="my-4 flex items-center justify-center rounded p-2 bg-red-500 border-red-700 text-red-100">
