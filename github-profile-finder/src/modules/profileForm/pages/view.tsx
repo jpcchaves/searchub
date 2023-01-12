@@ -2,10 +2,10 @@ import React from "react";
 import { GithubUserInterface } from "../../../types/GithubUserInterface";
 import AnimatedBg from "../components/animatedBg/AnimatedBg";
 import ProfileInfo from "../components/profileInfo/ProfileInfo";
-import Loading from "../components/loading/Loading";
-import * as Icon from "phosphor-react";
 import Button from "../components/button/Button";
 import Input from "../components/input/Input";
+import AnimatedIcon from "../components/animatedIcon/AnimatedIcon";
+import Error from "../components/error/Error";
 
 interface HomeProps {
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -36,26 +36,7 @@ const HomeView = ({
 									: "flex flex-col bg-white p-10 rounded relative"
 							}
 						>
-							<Icon.GithubLogo
-								size={32}
-								color="#0f0f0f"
-								className="absolute right-3 top-3"
-							>
-								<animate
-									attributeName="opacity"
-									values="0;1;0"
-									dur="3s"
-									repeatCount="indefinite"
-								></animate>
-								<animateTransform
-									attributeName="transform"
-									attributeType="XML"
-									type="scale"
-									dur="3s"
-									values="1;1.2;1"
-									repeatCount="indefinite"
-								/>
-							</Icon.GithubLogo>
+							<AnimatedIcon />
 							<h2 className="text-center tracking-widest">
 								Busque seu perfil do GitHub
 							</h2>
@@ -70,11 +51,7 @@ const HomeView = ({
 								/>
 								<Button loading={loading} />
 							</div>
-							{error ? (
-								<div className="my-4 flex items-center justify-center rounded p-2 bg-red-500 border-red-700 text-red-100">
-									<p>{error}</p>
-								</div>
-							) : null}
+							{error ? <Error error={error} /> : null}
 						</div>
 					</form>
 					{!error && Object.keys(user).length > 0 && (
