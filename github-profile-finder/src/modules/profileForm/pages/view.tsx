@@ -8,6 +8,8 @@ import AnimatedIcon from "../components/animatedIcon/AnimatedIcon";
 import Error from "../components/error/Error";
 import { ToastContainer } from "react-toastify";
 
+import { MagnifyingGlass, X } from "phosphor-react";
+
 interface HomeProps {
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 	handleInputChange: (e: string) => void;
@@ -15,6 +17,7 @@ interface HomeProps {
 	user: GithubUserInterface;
 	loading: boolean;
 	error: string;
+	handleCleanupInput: () => void;
 }
 
 const HomeView = ({
@@ -24,6 +27,7 @@ const HomeView = ({
 	user,
 	loading,
 	error,
+	handleCleanupInput,
 }: HomeProps) => {
 	return (
 		<AnimatedBg>
@@ -45,7 +49,7 @@ const HomeView = ({
 						<div
 							className={
 								Object.keys(user).length > 0
-									? "flex flex-col bg-white p-10 rounded-t-lg relative"
+									? "w-full flex flex-col bg-white p-10 rounded-t-lg relative"
 									: "flex flex-col bg-white p-10 rounded relative"
 							}
 						>
@@ -58,10 +62,29 @@ const HomeView = ({
 							</p>
 
 							<div className="w-full flex justify-center flex-col gap-2">
-								<Input
-									handleInputChange={handleInputChange}
-									username={username}
-								/>
+								<div className="flex rounded-md overflow-hidden w-full">
+									<div className="flex w-full p-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition duration-200 ease-in-out m-0 focus-within:text-gray-700 focus-within:bg-white focus-within:border-purple-600">
+										<Input
+											handleInputChange={handleInputChange}
+											username={username}
+										/>
+										{username ? (
+											<span
+												onClick={handleCleanupInput}
+												className="bg-white text-black text-2xl font-semibold  rounded-r-md cursor-pointer flex justify-center items-center"
+											>
+												<X size={22} />
+											</span>
+										) : (
+											<span
+												className="bg-white text-black text-2xl font-semibold  rounded-r-md cursor-pointer flex justify-center items-center
+								"
+											>
+												<MagnifyingGlass size={22} />
+											</span>
+										)}
+									</div>
+								</div>
 								<Button loading={loading} />
 							</div>
 							{error ? <Error error={error} /> : null}

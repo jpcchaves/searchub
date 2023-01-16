@@ -16,6 +16,11 @@ const Home = () => {
 
 	const handleCleanupState = () => {
 		setUser({} as GithubUserInterface);
+		setUsername("");
+	};
+
+	const handleCleanupInput = () => {
+		handleCleanupState();
 	};
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -53,6 +58,7 @@ const Home = () => {
 			user={user}
 			loading={loading}
 			error={error}
+			handleCleanupInput={handleCleanupInput}
 		/>
 	);
 };
