@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
 import { api } from "../../../hooks/useApi";
+import { notifyError, notifySuccess } from "../../../hooks/useToast";
 import { GithubUserInterface } from "../../../types/GithubUserInterface";
 import HomeView from "./view";
 
@@ -24,6 +25,7 @@ const Home = () => {
 			setLoading(true);
 			const response = await api.get(`/users/${username}`);
 			setUser(response.data);
+			notifySuccess(`Usuário ${username} buscado com sucesso!`);
 			setLoading(false);
 		} catch (error: any) {
 			console.log(error.message);
@@ -32,6 +34,8 @@ const Home = () => {
 			} else {
 				setError("Ocorreu um erro... Tente novamente");
 			}
+
+			notifyError("Ocorreu um erro ao buscar o usuário.");
 			setLoading(false);
 
 			setTimeout(() => {

@@ -6,6 +6,7 @@ import Button from "../components/button/Button";
 import Input from "../components/input/Input";
 import AnimatedIcon from "../components/animatedIcon/AnimatedIcon";
 import Error from "../components/error/Error";
+import { ToastContainer } from "react-toastify";
 
 interface HomeProps {
 	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
@@ -26,6 +27,18 @@ const HomeView = ({
 }: HomeProps) => {
 	return (
 		<AnimatedBg>
+			<ToastContainer
+				position="top-right"
+				autoClose={2000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="dark"
+			/>
 			<div className="w-full max-w-full flex justify-center absolute z-50">
 				<div className="lg:w-[60%] md:w-[70%] sm:w-[95%] w-[95%] mt-20">
 					<form onSubmit={(e) => handleSubmit(e)}>
