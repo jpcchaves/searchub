@@ -30,7 +30,7 @@ const Home = () => {
 			setLoading(true);
 			const response = await api.get(`/users/${username}`);
 			setUser(response.data);
-			notifySuccess(`Usuário ${username} buscado com sucesso!`);
+			notifySuccess(`Usuário ${username} encontrado com sucesso!`);
 			setLoading(false);
 		} catch (error: any) {
 			console.log(error.message);
