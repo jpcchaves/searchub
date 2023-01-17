@@ -1,11 +1,13 @@
 import React from "react";
 import { GithubUserInterface } from "../../../types/GithubUserInterface";
+
 import AnimatedBg from "../components/animatedBg/AnimatedBg";
 import ProfileInfo from "../components/profileInfo/ProfileInfo";
 import Button from "../components/button/Button";
 import Input from "../components/input/Input";
 import AnimatedIcon from "../components/animatedIcon/AnimatedIcon";
 import Error from "../components/error/Error";
+
 import { ToastContainer } from "react-toastify";
 
 import { MagnifyingGlass, X } from "phosphor-react";

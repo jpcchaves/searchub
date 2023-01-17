@@ -3,7 +3,7 @@ import { GithubUserInterface } from "../../../../types/GithubUserInterface";
 
 const ProfileInfo = ({ user }: { user: GithubUserInterface }) => {
 	return (
-		<div className="w-full bg-white rounded-b-lg px-10 mb-52">
+		<div className="w-full bg-white rounded-b-lg px-10 mb-52 pt-4 pb-12">
 			<div className="w-full flex items-center justify-center flex-col">
 				<div className="mb-2">
 					<img
@@ -17,7 +17,7 @@ const ProfileInfo = ({ user }: { user: GithubUserInterface }) => {
 						{user.name}
 					</h5>
 					<p className="text-lg text-gray-700 font-extralight mb-2">
-						{user.login}
+						@{user.login}
 					</p>
 					<p className="text-sm text-gray-500 ">{user.bio}</p>
 					<div className="flex mt-4 space-x-3 md:mt-6 items-center justify-center">
